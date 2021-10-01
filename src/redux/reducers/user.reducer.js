@@ -1,13 +1,15 @@
-import { userConstant } from '../constants'
+import { resetConstant, userConstant } from '../constants'
 
 const initialState = {
     message: '',
     token: null,
+    user: {},
     authenticate: false,
     authenticating: false,
 }
 
 export default (state = initialState, action) => {
+    console.log(action)
     switch (action.type) {
         case userConstant.LOGIN_REQUEST:
             state = {
@@ -23,6 +25,7 @@ export default (state = initialState, action) => {
                 authenticating: false,
                 authenticate: true,
                 token: action.payload.token,
+                user: action.payload.user,
             }
             break;
         case userConstant.LOGIN_FAILURE:
@@ -51,9 +54,10 @@ export default (state = initialState, action) => {
             }
             break;
         case userConstant.LOGOUT_SUCCESS:
-            state = {
-                ...initialState
-            }
+            state = { ...initialState }
+            break;
+        case resetConstant.RESET_USER:
+            state = { ...initialState }
             break;
     }
     return state;

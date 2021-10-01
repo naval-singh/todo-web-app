@@ -1,0 +1,38 @@
+.pageHeading{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 3px solid #dc3545;
+    margin: 15px 0 25px 0;
+}
+.pageHeading h3{
+    font-family: "Roboto", sans-serif;
+    font-weight: 400;
+    margin: 0;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+.square-button{
+    border: none;
+    outline: none;
+    background: #7194d4;
+    color: #fff;
+    border-radius: 5px;
+    margin-bottom: 5px;
+    margin-left: 10px;
+    padding: 1px 6px 4px 6px;
+    transition: all .5s ease;
+    font-size: 18px;
+}
+.col1{
+    width: 10%;
+    text-align: center;
+}
+.col2{
+    width: 70%;
+    text-align: left;
+}
+.col3{
+    width: 20%;
+    text-align: center;
+}

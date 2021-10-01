@@ -9,3 +9,13 @@ export const userConstant = {
 
     LOGOUT_SUCCESS: 'LOGOUT_SUCCESS',
 }
+
+export const todoConstant = {
+    GET_ALL_TODO_REQUEST: 'GET_ALL_TODO_REQUEST',
+    GET_ALL_TODO_SUCCESS: 'GET_ALL_TODO_SUCCESS',
+    GET_ALL_TODO_FAILURE: 'GET_ALL_TODO_FAILURE',
+}
+
+export const resetConstant = {
+    RESET_USER: 'RESET_USER'
+}

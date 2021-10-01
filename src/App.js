@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { isUserLoggedIn } from './redux/actions'
+import { getAllTodoList, isUserLoggedIn } from './redux/actions'
 import Router from './routes'
 
 const App = (props) => {
@@ -10,6 +10,7 @@ const App = (props) => {
 
   useEffect(() => {
     !authenticate && dispatch(isUserLoggedIn())
+    authenticate && dispatch(getAllTodoList())
   }, [authenticate])
 
   return <Router />

@@ -1,5 +1,5 @@
 import axiosInstance from '../../helpers/axios'
-import { userConstant } from '../constants'
+import { resetConstant, userConstant } from '../constants'
 
 export const signup = (user) => {
     return async (dispatch) => {
@@ -21,11 +21,13 @@ export const signin = (user) => {
             dispatch({ type: userConstant.LOGIN_REQUEST })
             const res = await axiosInstance.post('/login', user)
             if (res.status == 200) {
-                const { token } = res.data.response
+                const { token, userDetails } = res.data.response
+                console.log(res.data.response)
                 localStorage.setItem('token', token)
+                localStorage.setItem('user', JSON.stringify(userDetails))
                 dispatch({
                     type: userConstant.LOGIN_SUCCESS,
-                    payload: { token }
+                    payload: { token, user: userDetails }
                 })
             }
         } catch (e) {
@@ -51,10 +53,17 @@ export const isUserLoggedIn = () => {
     return (dispatch) => {
         const token = localStorage.getItem('token')
         if (token) {
+            const user = JSON.parse(localStorage.getItem('user'))
             dispatch({
                 type: userConstant.LOGIN_SUCCESS,
-                payload: { token }
+                payload: { token, user }
             })
         }
+    }
+}
+
+export const resetUser = () => {
+    return (dispatch) => {
+        dispatch({ type: resetConstant.RESET_USER })
     }
 }
